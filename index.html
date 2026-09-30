@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FoodieFanatix | Claire's world food reviews</title>
+<meta name="description" content="Honest restaurant reviews and food photography from the world's great food cities, by Claire.">
+<meta property="og:title" content="FoodieFanatix">
+<meta property="og:image" content="images/steak.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400..700&display=swap">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="visually-hidden-focusable" href="#reviews">Skip to reviews</a>
+
+<nav class="navbar navbar-expand-md ff-nav">
+  <div class="container-xl">
+    <a class="navbar-brand" href="#top" aria-label="FoodieFanatix home">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 6v6a2 2 0 0 0 2 2v6M9 6v5M11 6v5M13 6v6a2 2 0 0 1-2 2M17 6c-1.6 1.5-1.6 6 0 7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Foodie<span>Fanatix</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About Claire</a></li>
+        <li class="nav-item py-2 py-md-0"><button class="btn btn-plum btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#uploadModal">+ Upload review</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- Hero -->
+  <header class="container-xl hero">
+    <div class="row g-4 g-lg-5 align-items-center">
+      <div class="col-lg-5">
+        <span class="eyebrow">Claire's world food diary</span>
+        <h1>Eating the world, <em>one city</em> at a time.</h1>
+        <p class="lede">Honest reviews of the best restaurants, street stalls and cafés in the world's big food cities. Every dish photographed, every bill paid in full.</p>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <a class="btn btn-plum btn-lg" href="#reviews">Read the reviews</a>
+          <a class="btn btn-ghost btn-lg" href="#gallery">See the photos</a>
+        </div>
+        <div class="passport" id="passport" aria-label="Cities reviewed"></div>
+      </div>
+      <div class="col-lg-7">
+        <div class="collage" id="heroCollage">
+          <figure><img src="images/steak.jpg" alt="Bife de chorizo with charred green beans and caramelised onions">
+            <button class="boarding border-0 text-start" type="button" data-open-review="la-brasa-de-tomas">
+              <span class="code">EZE</span>
+              <span class="meta"><strong>La Brasa de Tomás</strong>Latest review · Buenos Aires</span>
+              <span class="score">9.4<small>/10</small></span>
+            </button>
+          </figure>
+          <figure><img src="images/dumplings.jpg" alt="Bowls of pleated dumplings"></figure>
+          <figure><img src="images/bibimbap.jpg" alt="Stone-pot bibimbap topped with a fried egg"></figure>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="container-xl pb-2" aria-labelledby="featuredTitle">
+    <div class="featured" id="featured"></div>
+  </section>
+  <section class="container-xl section" id="reviews" aria-labelledby="reviewsTitle">
+    <div class="section-head d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div>
+        <span class="eyebrow">The reviews</span>
+        <h2 id="reviewsTitle">Where to eat, city by city</h2>
+      </div>
+      <p class="text-muted-ff mb-0" id="resultCount" aria-live="polite"></p>
+    </div>
+    <div class="row g-2 g-md-3 align-items-center mb-4">
+      <div class="col-12 col-md-5 col-lg-4">
+        <label class="visually-hidden" for="search">Search reviews</label>
+        <div class="search-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input class="form-control" type="search" id="search" placeholder="Search city, dish or cuisine">
+        </div>
+      </div>
+      <div class="col-12 col-md-7 col-lg-6 min-w-0">
+        <div class="chips" id="regionChips" role="group" aria-label="Filter by region"></div>
+      </div>
+      <div class="col-12 col-lg-2">
+        <label class="visually-hidden" for="sortBy">Sort reviews</label>
+        <select class="form-select" id="sortBy">
+          <option value="latest">Latest first</option>
+          <option value="score">Highest score</option>
+        </select>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 g-lg-4" id="reviewGrid"></div>
+    <div class="empty-state mt-2" id="emptyState" hidden>
+      <p class="mb-1 fw-semibold">No reviews match that search.</p>
+      <p class="mb-0">Try another city or clear the filters.</p>
+    </div>
+  </section>
+  <section class="container-xl section pt-0" id="gallery" aria-labelledby="galleryTitle">
+    <div class="section-head mb-4">
+      <span class="eyebrow">From the plate</span>
+      <h2 id="galleryTitle">The photo wall</h2>
+      <p class="text-muted-ff mt-2 mb-0">Every shot from the latest trips. Tap any photo to see it full size.</p>
+    </div>
+    <div class="photo-wall" id="photoWall"></div>
+  </section>
+  <section class="container-xl section pt-0" id="about" aria-labelledby="aboutTitle">
+    <div class="row g-4 g-lg-5 align-items-center">
+      <div class="col-md-5 col-lg-4">
+        <img class="about-photo" src="images/claire.jpg" alt="Claire at a restaurant table, chopsticks in hand">
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <span class="eyebrow">About Claire</span>
+        <h2 id="aboutTitle" class="display-font fw-bold mt-1" style="font-size:clamp(1.8rem,4vw,2.6rem)">Hungry, curious, and always carrying a camera.</h2>
+        <p class="mt-3" style="max-width:62ch">I'm Claire, and FoodieFanatix is where I share every meal worth crossing a border for. I visit anonymously, pay my own way, and photograph everything before the first bite. If a place is great, I'll tell you what to order. If it isn't, I'll tell you that too.</p>
+        <h3 class="h5 mt-4 mb-3">How the Fanatix score works</h3>
+        <ul class="scale-list">
+          <li><span class="mono">9.0+</span><span><strong>Book the flight.</strong> Worth planning a trip around.</span></li>
+          <li><span class="mono">8.0–8.9</span><span><strong>Worth a detour.</strong> Cross town for it.</span></li>
+          <li><span class="mono">7.0–7.9</span><span><strong>Good if you're nearby.</strong> Solid, but not a pilgrimage.</span></li>
+          <li><span class="mono">&lt; 7.0</span><span><strong>Skip it.</strong> Your appetite deserves better.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="container-xl pb-5" aria-labelledby="dispatchTitle">
+    <div class="dispatch">
+      <div class="row g-3 align-items-center">
+        <div class="col-lg-6">
+          <h2 id="dispatchTitle">The Sunday Dispatch</h2>
+          <p class="mb-0">One email a week: the newest review, the best thing I ate, and where I'm flying next.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="d-flex flex-column flex-sm-row gap-2" id="dispatchForm" novalidate>
+            <label class="visually-hidden" for="dispatchEmail">Email address</label>
+            <input class="form-control form-control-lg" type="email" id="dispatchEmail" placeholder="you@example.com" required>
+            <button class="btn btn-lg flex-none" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="py-4">
+  <div class="container-xl d-flex flex-wrap justify-content-between gap-2">
+    <span><strong class="display-font">FoodieFanatix</strong> · Reviews and photography by Claire</span>
+    <span class="mono small">&copy; 2026 · All meals paid in full</span>
+  </div>
+</footer>
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+    <div class="modal-content" id="reviewModalBody"></div>
+  </div>
+</div>
+<div class="modal fade lightbox" id="lightbox" tabindex="-1" aria-label="Photo viewer" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content p-2">
+      <div class="d-flex justify-content-between align-items-center px-2 pb-2">
+        <span class="small" id="lightboxCaption"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <img id="lightboxImg" src="" alt="">
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable modal-fullscreen-sm-down">
+    <form class="modal-content needs-validation" id="uploadForm" novalidate>
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Claire's desk</span>
+          <h2 class="modal-title h4 mb-0" id="uploadTitle">Upload a new review</h2>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <label class="form-label" for="upPhotos">Photos</label>
+            <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-describedby="dropHelp">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="3"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+              <p class="mb-0 mt-1 fw-semibold">Drop photos here or tap to choose</p>
+              <p class="mb-0 small" id="dropHelp">JPG or PNG. The first photo becomes the cover.</p>
+            </div>
+            <input class="d-none" type="file" id="upPhotos" accept="image/*" multiple>
+            <div class="invalid-feedback d-block" id="photoError" hidden>Add at least one photo.</div>
+            <div class="previews" id="previews"></div>
+          </div>
+          <div class="col-md-8"><label class="form-label" for="upName">Restaurant</label><input class="form-control" id="upName" required placeholder="e.g. Café Lumière"><div class="invalid-feedback">Add the restaurant's name.</div></div>
+          <div class="col-md-4"><label class="form-label" for="upCuisine">Cuisine</label><input class="form-control" id="upCuisine" required placeholder="e.g. Bistro"><div class="invalid-feedback">Add a cuisine.</div></div>
+          <div class="col-md-5"><label class="form-label" for="upCity">City</label><input class="form-control" id="upCity" required placeholder="e.g. Tokyo"><div class="invalid-feedback">Add the city.</div></div>
+          <div class="col-md-4"><label class="form-label" for="upCountry">Country</label><input class="form-control" id="upCountry" required placeholder="e.g. Japan"><div class="invalid-feedback">Add the country.</div></div>
+          <div class="col-md-3"><label class="form-label" for="upCode">Airport code</label><input class="form-control mono text-uppercase" id="upCode" maxlength="3" pattern="[A-Za-z]{3}" required placeholder="HND"><div class="invalid-feedback">Three letters, like HND.</div></div>
+          <div class="col-md-5"><label class="form-label" for="upRegion">Region</label>
+            <select class="form-select" id="upRegion" required>
+              <option value="Asia">Asia</option><option value="Europe">Europe</option><option value="Americas">Americas</option><option value="Africa">Africa</option><option value="Oceania">Oceania</option>
+            </select></div>
+          <div class="col-md-7"><label class="form-label d-flex justify-content-between" for="upScore"><span>Fanatix score</span><output class="score" id="upScoreOut" for="upScore">8.5<small>/10</small></output></label>
+            <input type="range" class="form-range" id="upScore" min="5" max="10" step="0.1" value="8.5"></div>
+          <div class="col-md-7"><label class="form-label" for="upOrder">Must order</label><input class="form-control" id="upOrder" placeholder="e.g. Duck confit"></div>
+          <div class="col-md-5"><label class="form-label" for="upSpend">Spend for two</label><input class="form-control" id="upSpend" placeholder="e.g. ¥12,000"></div>
+          <div class="col-12"><label class="form-label" for="upText">Review</label><textarea class="form-control" id="upText" rows="6" required placeholder="What you ate, how it tasted, and whether it's worth the trip. Leave a blank line between paragraphs."></textarea><div class="invalid-feedback">Write the review before publishing.</div></div>
+          <div class="col-12"><p class="note mb-0">Uploads are saved in this browser for now. To publish for every reader, connect the site to a content system or backend (see the README).</p></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-plum" id="publishBtn">Publish review</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index:1090; margin-bottom: env(safe-area-inset-bottom, 0px)">
+  <div class="toast align-items-center" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex"><div class="toast-body" id="toastMsg"></div></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
